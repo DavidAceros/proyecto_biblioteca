@@ -19,7 +19,6 @@ This project implements and tests a **Library System** developed in **Python**, 
 1. Clone or download this repository.  
 2. Install the required dependencies (only `pytest` is needed):  
 
-```bash
 pip install pytest
 
 pytest test_top_down.py -v --tb=short
@@ -62,6 +61,14 @@ test_top_down.py::test_libro_no_disponible PASSED
 | `pytest -s`                  | Show `print()` output                      |
 | `pytest -x`                  | Stop on first error                        |
 | `pytest archivo::funcion -v` | Run a specific test                        |
-| `pytest --durations=5`       | Show 5 slowest tests                       |
-| `pytest --html=report.html`  | Generate HTML report (needs `pytest-html`) |
 
+
+### ✅ Test Execution Evidence
+<p align="center">
+  <img src="cJ.1.jfif" width="700" alt="Evidence 1"/>
+</p>
+
+### ✅ Results Summary
+<p align="center">
+  <img src="cJ.2.jfif" width="700" alt="Evidence 2"/>
+</p>
