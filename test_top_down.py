@@ -1,0 +1,38 @@
+import sys, os
+sys.path.append(os.path.dirname(__file__))
+
+import pytest
+from biblioteca_sistema import BibliotecaSistema
+from stubs.database_stub import DatabaseStub
+from stubs.auth_stub import AuthStub
+
+
+
+def test_prestamo_exitoso():
+    """Prueba el flujo exitoso usando stubs"""
+    db_stub = DatabaseStub()
+    auth_stub = AuthStub()
+    sistema = BibliotecaSistema(db_stub, auth_stub)
+
+    resultado = sistema.prestar_libro(usuario_id=1, libro_id=2)  # libro par → disponible
+    assert resultado == "Préstamo exitoso"
+
+
+def test_usuario_no_autorizado():
+    """Prueba rechazo por usuario no autorizado"""
+    db_stub = DatabaseStub()
+    auth_stub = AuthStub()
+    sistema = BibliotecaSistema(db_stub, auth_stub)
+
+    resultado = sistema.prestar_libro(usuario_id=0, libro_id=2)  # usuario no válido
+    assert resultado == "Usuario no autorizado"
+
+
+def test_libro_no_disponible():
+    """Prueba rechazo por libro no disponible"""
+    db_stub = DatabaseStub()
+    auth_stub = AuthStub()
+    sistema = BibliotecaSistema(db_stub, auth_stub)
+
+    resultado = sistema.prestar_libro(usuario_id=1, libro_id=3)  # libro impar → no disponible
+    assert resultado == "Libro no disponible"
